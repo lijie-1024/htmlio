@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- saved from url=(0367)https://wqs.jd.com/portal/wx/storageBridge2.shtml?1209&_fromiframe=1&_refer=https%3A%2F%2Fitem.m.jd.com%2Fproduct%2F61691330368.html%3Fsku%3D61691330368%26price%3D525.00%26fs%3D1%26sid%3D%26sf%3DnewM%26pos%3D4%26csid%3D33985fc9f68c55e39842cc1adfc6be7d_1574087325251_2_1574087331821%26ss_symbol%3D8%26ss_mtest%3Dm-search-none%2C~%26key%3D%25E8%25A1%25A3%25E6%259C%258D -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>代理</title></head><body><script type="text/javascript">
+(function() {
+    function handleRequest(event) {
+        try {
+            if(!event.origin || !event.origin.match(/\.jd\.(com|hk)$/)){
+                return;
+            }
+            var data = JSON.parse(event.data);
+            var storage = data.ss!="1"?window.localStorage:window.sessionStorage;
+                if (data.op === 'M') { //getAll Message
+                var arrJs = [];
+                for (var key in localStorage) {
+                    if (/^_m_/.test(key)) {
+                        arrJs.push({
+                            key: key,
+                            obj: localStorage.getItem(key)
+                        });
+                    }
+                }
+
+                event.source.postMessage(JSON.stringify({
+                    id: data.id,
+                    key: data.key,
+                    value: arrJs,
+                    timer:data.timer
+                }), event.origin);
+            } else if (data.op === 'W') { //写操作  
+                storage.setItem(data.key, JSON.stringify(data.value));
+                event.source.postMessage(event.data, event.origin);
+            } else if (data.op === 'D') { //删除  
+                storage.removeItem(data.key);
+                event.source.postMessage(event.data, event.origin);
+            } else if (data.op === 'X') { //清空  
+                storage.clear();
+                event.source.postMessage(event.data, event.origin);
+            } else { //默认：读操作  
+                var value = JSON.parse(storage.getItem(data.key));
+                event.source.postMessage(JSON.stringify({
+                    id: data.id,
+                    key: data.key,
+                    value: value,
+                    timer:data.timer
+                }), event.origin);
+            }
+        } catch (e) {
+            event.source.postMessage(event.data, event.origin);
+        }
+    }
+
+   
+    window.addEventListener("message", handleRequest, false);
+   
+})();
+</script></body></html>

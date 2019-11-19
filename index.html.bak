@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0227)https://item.m.jd.com/product/61691330368.html?sku=61691330368&price=525.00&fs=1&sid=&sf=newM&pos=4&csid=33985fc9f68c55e39842cc1adfc6be7d_1574087325251_2_1574087331821&ss_symbol=8&ss_mtest=m-search-none,~&key=%E8%A1%A3%E6%9C%8D -->
 <html lang="zh-CN" class="detail_standard"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script>
+    <script charset="utf-8" src="./韩都官方冬季年时尚潮流舒适个性纯色中长款印花长袖棉衣 白色 M【图片 价格 品牌 评论】-京东_files/m.history.min.js"></script><script>
         window.GLOBAL_NO_QRCODE = 1; //屏蔽二维码
         window._itemGlobal = {};
         window._activenologin = true; //防止组件自动登录
@@ -666,7 +666,7 @@ function __reloadResource(c){try{var l=document.head||document.getElementsByTagN
 <div id="part_gift" style="display: none" class="de_gift_choose_page">
     <h1 class="tips" id="partGiftTip"></h1>
     <div class="sections_body" id="partGiftGroup"></div>
-    <button class="commit fixed" id="partGiftBtn" onclick="window.location.href='pay.html'">确认</button>
+    <button class="commit fixed" id="partGiftBtn onclick="window.location.href='pay.htm'">确认</button>
 </div>
 <!--S 门店二级页面-->
 <div id="part_store" style="display: none">
